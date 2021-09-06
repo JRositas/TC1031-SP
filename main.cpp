@@ -20,9 +20,9 @@ int main(){
 
     ifstream archivoSuez;
 
-    archivoSuez.open("suez.txt")
+    archivoSuez.open("suez.txt");
 
-    while (fecha >> hora >> puntoEntrada >> ubi)
+    while (archivoSuez >> fecha >> hora >> puntoEntrada >> ubi)
     {
         listaEntradas[contadorEntrada] = new Entrada(fecha,hora,puntoEntrada,ubi);
         contadorEntrada++;     
