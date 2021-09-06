@@ -1,8 +1,8 @@
 #ifndef Entrada_h
 #define Entrada_h 
 #include <iostream>
-/* #include <vector> */
-/* #include <algorithm> */
+// #include <vector> 
+// #include <algorithm> 
 #include <string>
 
 class Entrada
@@ -60,6 +60,6 @@ void Entrada::mostrar()
   cout << fecha << " " << hora << " " << entrada << " " << ubi << endl;
 }
 
-#endif /* Entrada_h */
+#endif // Entrada_h 
 
 
