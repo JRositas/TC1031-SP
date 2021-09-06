@@ -12,5 +12,19 @@
 using namespace std;
 
 int main(){
+    Entrada entrada;
+    Entrada* listaEntradas[50];
+    int contadorEntrada;
+    string fecha, ubi, hora;
+    char puntoEntrada;
 
+    ifstream archivoSuez;
+
+    archivoSuez.open("suez.txt")
+
+    while (fecha >> hora >> puntoEntrada >> ubi)
+    {
+        listaEntradas[contadorEntrada] = new Entrada(fecha,hora,puntoEntrada,ubi);
+        contadorEntrada++;     
+    }
 }
