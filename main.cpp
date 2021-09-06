@@ -17,5 +17,7 @@ int main(){
     string fecha, ubi, hora;
     char puntoEntrada;
 
+    ifstream archivoSuez;
+
     
 }
