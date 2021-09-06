@@ -12,5 +12,10 @@
 using namespace std;
 
 int main(){
+    Entrada entrada;
+    Entrada* listaEntradas[50];
+    string fecha, ubi, hora;
+    char puntoEntrada;
 
+    
 }
