@@ -57,7 +57,7 @@ Entrada::Entrada(string _fecha, int _fechaCode, string _hora, char _puntoEntrada
 
 void Entrada::mostrar()
 {
-  cout << fecha << "-" << hora << "-" << puntoEntrada << "-" << ubi << endl;
+  cout << fecha << " " << hora << " " << puntoEntrada << " " << ubi << endl;
 }
 
 #endif // Entrada_h 
