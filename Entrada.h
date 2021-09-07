@@ -10,20 +10,20 @@ class Entrada
 
   public:
     Entrada();
-    Entrada(string _fecha, int _fechaCode, string _hora, char _entrada, string _ubi);
+    Entrada(string _fecha, int _fechaCode, string _hora, char _puntoEntrada, string _ubi);
 
     // get
     string getFecha() { return fecha;}
     int getFechaCode() { return fechaCode;}
     string getHora() { return hora;}
-    char getEntrada() { return entrada;}
+    char getPuntoEntrada() { return puntoEntrada;}
     string getUbi() { return ubi;}
 
     //set 
     void setFecha(string _fecha) { fecha =  _fecha; }
     void setFechaCode(int _fechaCode) { fechaCode = _fechaCode; }
     void setHora( string _hora) { hora = _hora; }
-    void setEntrada( char _entrada) { entrada = _entrada;}
+    void setPuntoEntrada( char _puntoEntrada) { puntoEntrada = _puntoEntrada;}
     void setUbi(string _ubi) { ubi = _ubi; }
 
     // imprimir 
@@ -33,7 +33,7 @@ class Entrada
       string fecha;
       int fechaCode;
       string hora;
-      char entrada;
+      char puntoEntrada;
       string ubi;
 };
 
@@ -42,22 +42,22 @@ Entrada::Entrada()
   fecha = " ";
   fechaCode = 0;
   hora = " ";
-  entrada = " ";
+  puntoEntrada = " ";
   ubi = " ";
 }
 
-Entrada::Entrada(string _fecha, int _fechaCode, string _hora, char _entrada, string _ubi)
+Entrada::Entrada(string _fecha, int _fechaCode, string _hora, char _puntoEntrada, string _ubi)
 {
   fecha =  _fecha;
   fechaCode = _fechaCode;
   hora = _hora;
-  entrada = _entrada;
+  puntoEntrada = _puntoEntrada;
   ubi = _ubi;
 }
 
 void Entrada::mostrar()
 {
-  cout << fecha << " " << hora << " " << entrada << " " << ubi << endl;
+  cout << fecha << "-" << hora << "-" << puntoEntrada << "-" << ubi << endl;
 }
 
 #endif // Entrada_h 
