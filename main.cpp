@@ -63,10 +63,32 @@ int date2Int(string date){
     return dateCode;
 }
 
+//funcion
+bool comparaDate( Entrada x, Entrada y) // compara fecha por fecha
+{
+  if (x.getUbi() == y.getUbi()) // checar si hay empate, si hay empate ordena por fecha
+  {
+    return x.getFechaCode() < y.getFechaCode(); // cual de las dos fechas es más grande
+  }
+  //Si la fecha de x es más chica, regresa falso
+  if(x.getUbi() < y.getUbi())
+  {
+    return false;
+  }
+  //Si la fecha de y es más chica, regresa verdadero
+  else
+  {
+    return true;
+  }
+  //return (x.getUbi().compare(x,y) < 0); //Esto ya se puede borrar
+}
+
+
+
+
 int main(){
-    Entrada entrada;
-    Entrada* listaEntradas[50];
-    int contadorEntrada;
+    //Entrada* listaEntradas[50];
+    int contadorEntrada, fechaCode;
     string fecha, ubi, hora;
     char puntoEntrada;
 
@@ -74,9 +96,41 @@ int main(){
 
     archivoSuez.open("suez.txt");
 
+    
+    vector<Entrada> mivect;
+    Entrada *objAuxiliar; //Crear variable que guarde el objeto fuera del ciclo
+    while (archivoSuez >> fecha >> hora >> puntoEntrada >> ubi)
+    {
+        //Hay que definir fecha code antes de meterlo al constructor
+        //fechaCode = date2int(fecha);
+        objAuxiliar = new Entrada(fecha, fechaCode, hora, puntoEntrada, ubi); //Igualas la variable al objAuxiliar
+        mivect.push_back(objAuxiliar);  //push_back() es el metodo que guarda los valore de un vector en el
+    }
+
+    /*
+    ====Anterior====
     while (archivoSuez >> fecha >> hora >> puntoEntrada >> ubi)
     {
         listaEntradas[contadorEntrada] = new Entrada(fecha,hora,puntoEntrada,ubi);
-        contadorEntrada++;     
+        contadorEntrada++;  
+
     }
+    */
+
+  /*
+
+    [..., ... , ... , , , , , , , ,] arreglo
+    [] vector.push_back() -> [... , ] vector.push_back() -> [..., ..., ]
+
+
+    */
+
+    /*
+      Cuando quieras checar la fecha, utilizas metodo comparaDate
+      ¿De donde saco los metodos de tipo "Entrada"? Del vector "mivect"
+      comparaDate(mivect[0], mivect[1]);
+    */
+
+    //sort(listaEntradas.begin(), listaEntradas.end(), comparaDate);
 }
+
