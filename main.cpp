@@ -11,8 +11,7 @@
 
 using namespace std;
 
-void date2Int(Entrada entrada){
-    string date = entrada.getFecha();
+int date2Int(string date){
     int dateCode = 0;
     int aux = 0;
     int i = 0;
@@ -61,7 +60,7 @@ void date2Int(Entrada entrada){
     }
     dateCode += (aux * 10000);
 
-    entrada.setFechaCode(dateCode);
+    return dateCode;
 }
 
 int main(){
