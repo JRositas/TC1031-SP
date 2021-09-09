@@ -80,14 +80,12 @@ bool comparaDate( Entrada x, Entrada y) // compara fecha por fecha
   {
     return true;
   }
-  //return (x.getUbi().compare(x,y) < 0); //Esto ya se puede borrar
 }
 
 
 
 
 int main(){
-    //Entrada* listaEntradas[50];
     int contadorEntrada, fechaCode;
     string fecha, ubi, hora;
     char puntoEntrada;
@@ -119,20 +117,10 @@ int main(){
     
     // using function as comp
     sort(mivect.begin(), mivect.end(), comparaDate);
-  /*
-
-    [..., ... , ... , , , , , , , ,] arreglo
-    [] vector.push_back() -> [... , ] vector.push_back() -> [..., ..., ]
 
 
-    */
+    
 
-    /*
-      Cuando quieras checar la fecha, utilizas metodo comparaDate
-      ¿De donde saco los metodos de tipo "Entrada"? Del vector "mivect"
-      comparaDate(mivect[0], mivect[1]);
-    */
 
-    //sort(listaEntradas.begin(), listaEntradas.end(), comparaDate);
 }
 
