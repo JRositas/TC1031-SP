@@ -1,5 +1,7 @@
 #ifndef Entrada_h
 #define Entrada_h 
+
+using namespace std;
 #include <iostream>
 // #include <vector> 
 // #include <algorithm> 
@@ -7,10 +9,9 @@
 
 class Entrada
 {
-
   public:
     Entrada();
-    Entrada(string _fecha, int _fechaCode, string _hora, char _puntoEntrada, string _ubi);
+    Entrada(string, int, string, char, string);
 
     // get
     string getFecha() { return fecha;}
@@ -42,7 +43,7 @@ Entrada::Entrada()
   fecha = " ";
   fechaCode = 0;
   hora = " ";
-  puntoEntrada = " ";
+  puntoEntrada = ' ';
   ubi = " ";
 }
 
@@ -61,5 +62,3 @@ void Entrada::mostrar()
 }
 
 #endif // Entrada_h 
-
-
