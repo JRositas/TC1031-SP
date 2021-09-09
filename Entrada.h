@@ -1,17 +1,16 @@
-#include <iostream>
-// #include <vector> 
-// #include <algorithm> 
-#include <string>
-
 #ifndef ENTRADA_H
 #define ENTRADA_H 
 
+using namespace std;
+
+#include <iostream>
+#include <string>
+
 class Entrada
 {
-
   public:
-    Entrada(string fecha, int fechaCode, string hora, char puntoEntrada, string ubi);
     Entrada();
+    Entrada(string, int, string, char, string);
 
     // get
     string getFecha() { return fecha;}
@@ -62,5 +61,3 @@ void Entrada::mostrar()
 }
 
 #endif // Entrada_h 
-
-
