@@ -1,4 +1,16 @@
-// Equipo 12
+
+
+/* 
+El programa realizará el ordenamiento de las entradas por UBI + Fecha , almacenadas en un vector llamado 'mivect'.  
+Dará la opción de solicitar al usuario la serie a buscar , que en este caso son los 3 caracteres de UBI. 
+Por ende, desplegará los puntos de Entrada al canal de los buques con los caracteres ingresados de forma ordenada 'UBI + Fecha'.
+*/
+
+// Integrantes (Equipo 12) :
+// Daniel Evaristo Escalera Bonilla - 
+// José Arnoldo Rositas Salinas -
+// Ángela Felicia Guajardo Olveda -
+
 // SP TC1031
 // 06 Sep 2021
 
@@ -82,6 +94,8 @@ bool comparaDate( Entrada x, Entrada y) // compara fecha por fecha
     return true;
   }
 }
+
+
 // Complejidad: log(n)
 // utilizar lower_bound
 
