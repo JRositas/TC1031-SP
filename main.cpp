@@ -116,7 +116,9 @@ int main(){
 
     }
     */
-
+    
+    // using function as comp
+    sort(mivect.begin(), mivect.end(), comparaDate);
   /*
 
     [..., ... , ... , , , , , , , ,] arreglo
