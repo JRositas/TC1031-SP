@@ -115,7 +115,7 @@ int main(){
     }
     */
     
-    // using function as comp
+    // sort que implementa la función bool ComparaDate
     sort(mivect.begin(), mivect.end(), comparaDate);
 
 
