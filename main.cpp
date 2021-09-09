@@ -96,6 +96,30 @@ bool comparaDate( Entrada x, Entrada y) // compara fecha por fecha
 
 // Complejidad: log(n)
 // utilizar lower_bound
+vector<Entrada> busqBinaria(vector<Entrada> &entrada, string ubiBusca)
+{
+  vector<string> inicioUbi;
+  vector<Entrada> listaEncontrada;
+  string ubiSimplificado;
+  vector<string>::iterator inicioBuscado, finBuscado;
+
+  for (int i = 0; i < entrada.size(); i++) {
+    for (size_t j = 0; i < 3; i++)
+    {
+        ubiSimplificado += entrada[i].getUbi()[j];
+    }
+    inicioUbi[i] = ubiSimplificado;
+  }
+
+  inicioBuscado = lower_bound(inicioUbi.begin(), inicioUbi.end(), ubiBusca);
+  finBuscado = upper_bound(inicioUbi.begin(), inicioUbi.end(), ubiBusca);
+  
+  for (int i = (inicioBuscado- inicioUbi.begin()); i < (finBuscado- inicioUbi.begin()); i++){
+    listaEncontrada[i - (inicioBuscado- inicioUbi.begin())] = entrada[i];
+  }
+
+  return listaEncontrada;
+}
 
 
 
