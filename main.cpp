@@ -83,12 +83,10 @@ bool comparaDate( Entrada x, Entrada y) // compara fecha por fecha
   {
     return x.getFechaCode() < y.getFechaCode(); // cual de las dos fechas es más grande
   }
-  //Si la fecha de x es más chica, regresa falso
   if(x.getUbi() < y.getUbi())
   {
     return false;
   }
-  //Si la fecha de y es más chica, regresa verdadero
   else
   {
     return true;
