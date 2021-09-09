@@ -11,6 +11,7 @@
 
 using namespace std;
 
+// Complejidad O(n) Lineal, dependiente del largo de "date"
 int date2Int(string date){
     int dateCode = 0;
     int aux = 0;
