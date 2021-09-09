@@ -63,6 +63,7 @@ int date2Int(string date){
     return dateCode;
 }
 
+// Complejidad: 0(1)
 bool comparaDate( Entrada x, Entrada y) // compara fecha por fecha
 {
   if (x.getUbi() == y.getUbi()) // checar si hay empate, si hay empate ordena por fecha
@@ -80,6 +81,10 @@ bool comparaDate( Entrada x, Entrada y) // compara fecha por fecha
     return true;
   }
 }
+// Complejidad: log(n)
+// utilizar lower_bound
+
+
 
 int main(){
     int contadorEntrada, fechaCode;
