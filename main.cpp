@@ -7,9 +7,9 @@ Por ende, desplegará los puntos de Entrada al canal de los buques con los carac
 */
 
 // Integrantes (Equipo 12) :
-// Daniel Evaristo Escalera Bonilla - 
-// José Arnoldo Rositas Salinas -
-// Ángela Felicia Guajardo Olveda -
+// Daniel Evaristo Escalera Bonilla - A00831289
+// José Arnoldo Rositas Salinas - A00829760
+// Ángela Felicia Guajardo Olveda - A00829821
 
 // SP TC1031
 // 06 Sep 2021
