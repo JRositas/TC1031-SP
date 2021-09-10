@@ -1,5 +1,3 @@
-
-
 /* 
 El programa realizará el ordenamiento de las entradas por UBI + Fecha , almacenadas en un vector llamado 'mivect'.  
 Dará la opción de solicitar al usuario la serie a buscar , que en este caso son los 3 caracteres de UBI. 
@@ -83,17 +81,10 @@ bool comparaDate( Entrada x, Entrada y) // compara fecha por fecha
   {
     return x.getFechaCode() < y.getFechaCode(); // cual de las dos fechas es más grande
   }
-  if(x.getUbi() < y.getUbi())
-  {
-    return false;
-  }
-  else
-  {
-    return true;
-  }
+  return (x.getUbi() < y.getUbi());
 }
 
-//Complejidad: O(n) 
+//Complejidad: O(1) 
 string countryFromUbi(string ubi){
     string pais;
     for (int i = 0; i < 3; i++)
@@ -103,27 +94,11 @@ string countryFromUbi(string ubi){
     return pais;
 }
 
-/* Complejidad: log(n)
-vector<int> busqBinaria(vector<string> &lista, string ubiBusca){
-    vector<string>::iterator inicioBuscado, finBuscado;
-    vector<int> limites;
-
-    inicioBuscado = lower_bound(lista.begin(), lista.end(), ubiBusca);
-    finBuscado = upper_bound(lista.begin(), lista.end(), ubiBusca);
-
-    limites[0] = (inicioBuscado- lista.begin());
-    limites[1] = (finBuscado- lista.begin());
-    
-    return limites;
-}
-*/
-
-
 
 int main(){
     int fechaCode;
     vector<string> listaPaises;
-    string archivo, fecha, ubi, hora, pais, paisABuscar = " ", paist = " ";
+    string archivo, fecha, ubi, hora, pais, paisABuscar, paist;
     char puntoEntrada;
 
     ifstream archivoSuez;
@@ -147,15 +122,10 @@ int main(){
     sort(mivect.begin(), mivect.end(), comparaDate);
 
     for(int i = 0; i < mivect.size(); i++){
-        paist = "";
         paist = mivect[i].getPais();
         listaPaises.push_back(paist);
-        cout << listaPaises[i] << endl;
-    }
-    
-    
+    } 
 
-    paisABuscar = "";
     cin >> paisABuscar;
 
     vector<string>::iterator inicioBuscado, finBuscado;
@@ -166,19 +136,8 @@ int main(){
     cout << (inicioBuscado- listaPaises.begin()) << endl;
     cout << (finBuscado- listaPaises.begin()) << endl;
 
-    vector<string> v;
-
-    paisABuscar = "";
-    v = {"V2L", "D9A","D9A","D9A", "D9A"};
-    cin >> paisABuscar;
-
-    inicioBuscado = lower_bound(v.begin(), v.end(), paisABuscar);
-    finBuscado = upper_bound(v.begin(), v.end(), paisABuscar);
-
-    cout << (inicioBuscado- v.begin()) << endl;
-    cout << (finBuscado- v.begin()) << endl;
-
-    //for(int i = limites[0]; i < limites[1]; i++){
-    //    mivect[i].mostrar();
-    //}
+for(int i = (inicioBuscado- listaPaises.begin()); i < (finBuscado- listaPaises.begin()) ; i++){
+       mivect[i].mostrar();
+    }
+    
 }
