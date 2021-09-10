@@ -93,6 +93,15 @@ bool comparaDate( Entrada x, Entrada y) // compara fecha por fecha
   }
 }
 
+// Complejidad: 0(1)
+string countryFromUbi(string ubi){
+    string pais;
+    for (int i = 0; i < 3; i++)
+    {
+        pais += ubi[i];
+    }
+    return pais;
+}
 
 // Complejidad: log(n)
 // utilizar lower_bound
@@ -100,22 +109,26 @@ bool comparaDate( Entrada x, Entrada y) // compara fecha por fecha
 
 
 int main(){
-    int contadorEntrada, fechaCode;
-    string fecha, ubi, hora;
+    int fechaCode;
+    string archivo, fecha, ubi, hora, pais, paisABuscar = " ";
     char puntoEntrada;
 
     ifstream archivoSuez;
 
-    archivoSuez.open("suez.txt");
+    cin >> archivo;
+
+    archivoSuez.open(archivo);
 
     vector<Entrada> mivect;
+
     Entrada *objAuxiliar; //Crear variable que guarde el objeto fuera del ciclo
+    
     while (archivoSuez >> fecha >> hora >> puntoEntrada >> ubi)
-    {
+    {   
+        pais = countryFromUbi(ubi);
         fechaCode = date2Int(fecha);
-        objAuxiliar = new Entrada(fecha, fechaCode, hora, puntoEntrada, ubi); //Igualas la variable al objAuxiliar
+        objAuxiliar = new Entrada(fecha, fechaCode, hora, puntoEntrada, ubi, pais); //Igualas la variable al objAuxiliar
         mivect.push_back(*objAuxiliar);  //push_back() es el metodo que guarda los valores en el vector
     }
-    
+
     sort(mivect.begin(), mivect.end(), comparaDate);
-}

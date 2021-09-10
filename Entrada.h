@@ -1,3 +1,4 @@
+  
 #ifndef Entrada_h
 #define Entrada_h 
 
@@ -8,7 +9,7 @@ class Entrada
 {
   public:
     Entrada();
-    Entrada(string, int, string, char, string);
+    Entrada(string, int, string, char, string, string);
 
     // get
     string getFecha() { return fecha;}
@@ -16,6 +17,7 @@ class Entrada
     string getHora() { return hora;}
     char getPuntoEntrada() { return puntoEntrada;}
     string getUbi() { return ubi;}
+    string getPais() { return pais;}
 
     //set 
     void setFecha(string _fecha) { fecha =  _fecha; }
@@ -23,6 +25,7 @@ class Entrada
     void setHora( string _hora) { hora = _hora; }
     void setPuntoEntrada( char _puntoEntrada) { puntoEntrada = _puntoEntrada;}
     void setUbi(string _ubi) { ubi = _ubi; }
+    void setPais(string _pais) { pais = _pais;}
 
     // imprimir 
     void mostrar();
@@ -33,6 +36,7 @@ class Entrada
       string hora;
       char puntoEntrada;
       string ubi;
+      string pais;
 };
 
 Entrada::Entrada()
@@ -42,15 +46,17 @@ Entrada::Entrada()
   hora = " ";
   puntoEntrada = ' ';
   ubi = " ";
+  pais = " ";
 }
 
-Entrada::Entrada(string _fecha, int _fechaCode, string _hora, char _puntoEntrada, string _ubi)
+Entrada::Entrada(string _fecha, int _fechaCode, string _hora, char _puntoEntrada, string _ubi, string _pais)
 {
   fecha =  _fecha;
   fechaCode = _fechaCode;
   hora = _hora;
   puntoEntrada = _puntoEntrada;
   ubi = _ubi;
+  pais = _pais;
 }
 
 void Entrada::mostrar()
