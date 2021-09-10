@@ -93,53 +93,92 @@ bool comparaDate( Entrada x, Entrada y) // compara fecha por fecha
   }
 }
 
-
-// Complejidad: log(n)
-// utilizar lower_bound
-vector<Entrada> busqBinaria(vector<Entrada> &entrada, string ubiBusca)
-{
-  vector<string> inicioUbi;
-  vector<Entrada> listaEncontrada;
-  string ubiSimplificado;
-  vector<string>::iterator inicioBuscado, finBuscado;
-
-  for (int i = 0; i < entrada.size(); i++) {
-    for (size_t j = 0; i < 3; i++)
+//Complejidad: O(n) 
+string countryFromUbi(string ubi){
+    string pais;
+    for (int i = 0; i < 3; i++)
     {
-        ubiSimplificado += entrada[i].getUbi()[j];
+        pais += ubi[i];
     }
-    inicioUbi[i] = ubiSimplificado;
-  }
-
-  inicioBuscado = lower_bound(inicioUbi.begin(), inicioUbi.end(), ubiBusca);
-  finBuscado = upper_bound(inicioUbi.begin(), inicioUbi.end(), ubiBusca);
-  
-  for (int i = (inicioBuscado- inicioUbi.begin()); i < (finBuscado- inicioUbi.begin()); i++){
-    listaEncontrada[i - (inicioBuscado- inicioUbi.begin())] = entrada[i];
-  }
-
-  return listaEncontrada;
+    return pais;
 }
+
+/* Complejidad: log(n)
+vector<int> busqBinaria(vector<string> &lista, string ubiBusca){
+    vector<string>::iterator inicioBuscado, finBuscado;
+    vector<int> limites;
+
+    inicioBuscado = lower_bound(lista.begin(), lista.end(), ubiBusca);
+    finBuscado = upper_bound(lista.begin(), lista.end(), ubiBusca);
+
+    limites[0] = (inicioBuscado- lista.begin());
+    limites[1] = (finBuscado- lista.begin());
+    
+    return limites;
+}
+*/
 
 
 
 int main(){
-    int contadorEntrada, fechaCode;
-    string fecha, ubi, hora;
+    int fechaCode;
+    vector<string> listaPaises;
+    string archivo, fecha, ubi, hora, pais, paisABuscar = " ", paist = " ";
     char puntoEntrada;
 
     ifstream archivoSuez;
 
-    archivoSuez.open("suez.txt");
+    cin >> archivo;
+
+    archivoSuez.open(archivo);
 
     vector<Entrada> mivect;
+
     Entrada *objAuxiliar; //Crear variable que guarde el objeto fuera del ciclo
+    
     while (archivoSuez >> fecha >> hora >> puntoEntrada >> ubi)
-    {
+    {   
+        pais = countryFromUbi(ubi);
         fechaCode = date2Int(fecha);
-        objAuxiliar = new Entrada(fecha, fechaCode, hora, puntoEntrada, ubi); //Igualas la variable al objAuxiliar
+        objAuxiliar = new Entrada(fecha, fechaCode, hora, puntoEntrada, ubi, pais); //Igualas la variable al objAuxiliar
         mivect.push_back(*objAuxiliar);  //push_back() es el metodo que guarda los valores en el vector
     }
-    
+
     sort(mivect.begin(), mivect.end(), comparaDate);
+
+    for(int i = 0; i < mivect.size(); i++){
+        paist = "";
+        paist = mivect[i].getPais();
+        listaPaises.push_back(paist);
+        cout << listaPaises[i] << endl;
+    }
+    
+    
+
+    paisABuscar = "";
+    cin >> paisABuscar;
+
+    vector<string>::iterator inicioBuscado, finBuscado;
+    
+    inicioBuscado = lower_bound(listaPaises.begin(), listaPaises.end(), paisABuscar);
+    finBuscado = upper_bound(listaPaises.begin(), listaPaises.end(), paisABuscar);
+
+    cout << (inicioBuscado- listaPaises.begin()) << endl;
+    cout << (finBuscado- listaPaises.begin()) << endl;
+
+    vector<string> v;
+
+    paisABuscar = "";
+    v = {"V2L", "D9A","D9A","D9A", "D9A"};
+    cin >> paisABuscar;
+
+    inicioBuscado = lower_bound(v.begin(), v.end(), paisABuscar);
+    finBuscado = upper_bound(v.begin(), v.end(), paisABuscar);
+
+    cout << (inicioBuscado- v.begin()) << endl;
+    cout << (finBuscado- v.begin()) << endl;
+
+    //for(int i = limites[0]; i < limites[1]; i++){
+    //    mivect[i].mostrar();
+    //}
 }
