@@ -131,10 +131,7 @@ int main(){
     inicioBuscado = lower_bound(listaPaises.begin(), listaPaises.end(), paisABuscar);
     finBuscado = upper_bound(listaPaises.begin(), listaPaises.end(), paisABuscar);
 
-    cout << (inicioBuscado- listaPaises.begin()) << endl;
-    cout << (finBuscado- listaPaises.begin()) << endl;
-
-for(int i = (inicioBuscado- listaPaises.begin()); i < (finBuscado- listaPaises.begin()) ; i++){
+    for(int i = (inicioBuscado- listaPaises.begin()); i < (finBuscado- listaPaises.begin()) ; i++){
        mivect[i].mostrar();
     }
     
