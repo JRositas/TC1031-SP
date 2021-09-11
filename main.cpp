@@ -97,9 +97,12 @@ string countryFromUbi(string ubi){
 
 int main(){
     int fechaCode;
-    vector<string> listaPaises;
-    string archivo, fecha, ubi, hora, pais, paisABuscar, paist;
     char puntoEntrada;
+    string archivo, fecha, ubi, hora, pais, paisABuscar, paisaux;
+    Entrada *objAuxiliar; //Crear variable que guarde el objeto fuera del ciclo
+    vector<string> listaPaises;
+    vector<string>::iterator inicioBuscado, finBuscado;
+    vector<Entrada> mivect;
 
     ifstream archivoSuez;
 
@@ -107,9 +110,6 @@ int main(){
 
     archivoSuez.open(archivo);
 
-    vector<Entrada> mivect;
-
-    Entrada *objAuxiliar; //Crear variable que guarde el objeto fuera del ciclo
     
     while (archivoSuez >> fecha >> hora >> puntoEntrada >> ubi)
     {   
@@ -122,13 +122,11 @@ int main(){
     sort(mivect.begin(), mivect.end(), comparaDate);
 
     for(int i = 0; i < mivect.size(); i++){
-        paist = mivect[i].getPais();
-        listaPaises.push_back(paist);
+        paisaux = mivect[i].getPais();
+        listaPaises.push_back(paisaux);
     } 
 
     cin >> paisABuscar;
-
-    vector<string>::iterator inicioBuscado, finBuscado;
     
     inicioBuscado = lower_bound(listaPaises.begin(), listaPaises.end(), paisABuscar);
     finBuscado = upper_bound(listaPaises.begin(), listaPaises.end(), paisABuscar);
