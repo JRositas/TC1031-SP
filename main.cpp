@@ -127,7 +127,7 @@ int main(){
     {   
         pais = countryFromUbi(ubi);
         fechaCode = date2Int(fecha);
-        objAuxiliar = new Entrada(fecha, fechaCode, hora, puntoEntrada, ubi, pais); //Igualas la variable al objAuxiliar
+        objAuxiliar = new Entrada(fecha, fechaCode, hora, puntoEntrada, ubi, pais);
         mivect.push_back(*objAuxiliar);  //push_back() es el metodo que guarda los valores en el vector
     }
 
