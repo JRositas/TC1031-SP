@@ -141,7 +141,7 @@ int main(){
     finBuscado = upper_bound(listaPaises.begin(), listaPaises.end(), paisABuscar);
 
     //Despliega los datos de las entradas del país buscado
-    for(int i = ((finBuscado- listaPaises.begin())-1); i > (inicioBuscado- listaPaises.begin()) ; i--){
+    for(int i = (inicioBuscado- listaPaises.begin()); i < (finBuscado- listaPaises.begin()) ; i++){
        mivect[i].mostrar();
     }
   
