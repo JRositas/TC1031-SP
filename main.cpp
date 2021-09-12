@@ -1,5 +1,3 @@
-
-
 /* 
 El programa realizará el ordenamiento de las entradas por UBI + Fecha , almacenadas en un vector llamado 'mivect'.  
 Dará la opción de solicitar al usuario la serie a buscar , que en este caso son los 3 caracteres de UBI. 
@@ -76,24 +74,18 @@ int date2Int(string date){
     return dateCode;
 }
 
-// Complejidad: 0(1)
+// Complejidad: 0(1) Revisa si los UBI de las entradas son iguales, si lo son, compara las fechas, si nó compara los UBI
 bool comparaDate( Entrada x, Entrada y) // compara fecha por fecha
 {
   if (x.getUbi() == y.getUbi()) // checar si hay empate, si hay empate ordena por fecha
   {
     return x.getFechaCode() < y.getFechaCode(); // cual de las dos fechas es más grande
   }
-  if(x.getUbi() < y.getUbi())
-  {
-    return false;
-  }
-  else
-  {
-    return true;
-  }
+  return x.getUbi() < y.getUbi();
 }
 
-// Complejidad: 0(1)
+
+//Complejidad: O(1) Regresa los primeros tres caractéres de un código UBI ingresado
 string countryFromUbi(string ubi){
     string pais;
     for (int i = 0; i < 3; i++)
@@ -103,34 +95,54 @@ string countryFromUbi(string ubi){
     return pais;
 }
 
-// Complejidad: log(n)
-// utilizar lower_bound
-
 
 
 int main(){
-    int fechaCode;
-    string archivo, fecha, ubi, hora, pais, paisABuscar = " ";
-    char puntoEntrada;
 
+    // Creación de variables
+    int fechaCode;
+    char puntoEntrada;
+    string archivo, fecha, ubi, hora, pais, paisABuscar, paisaux;
+    Entrada *objAuxiliar; //Crear variable que guarde el objeto fuera del ciclo
+    vector<string> listaPaises;
+    vector<string>::iterator inicioBuscado, finBuscado;
+    vector<Entrada> mivect;
+
+    //Leer archivo
     ifstream archivoSuez;
 
     cin >> archivo;
 
     archivoSuez.open(archivo);
 
-    vector<Entrada> mivect;
-
-    Entrada *objAuxiliar; //Crear variable que guarde el objeto fuera del ciclo
-    
+    //Almacenar entradas como objetos en un vector
     while (archivoSuez >> fecha >> hora >> puntoEntrada >> ubi)
-    {   
-        pais = countryFromUbi(ubi);
-        fechaCode = date2Int(fecha);
-        objAuxiliar = new Entrada(fecha, fechaCode, hora, puntoEntrada, ubi, pais);
+    {
+        pais = countryFromUbi(ubi); //Extraer los los primeros carácteres del UBI y guardarlos como el país de origen 
+        fechaCode = date2Int(fecha); //Convertir fechas a enteros para permitir la comparación
+        objAuxiliar = new Entrada(fecha, fechaCode, hora, puntoEntrada, ubi, pais); //Igualas la variable al objAuxiliar
         mivect.push_back(*objAuxiliar);  //push_back() es el metodo que guarda los valores en el vector
     }
 
+    //Complejidad O(nlog2(n)), ordena las entradas en base a un comparador.
     sort(mivect.begin(), mivect.end(), comparaDate);
 
+    //Guarda los identificadores de paises de las entradas en un vector.
+    for(int i = 0; i < mivect.size(); i++){
+        paisaux = mivect[i].getPais();
+        listaPaises.push_back(paisaux);
+    } 
+
+    //Se solicita un código de país a buscar
+    cin >> paisABuscar;
+    
+    // Complejidad log2(n) + 1, funciones que regresan los apuntadores que indican el rango de índices donde se encuentran las entradas de un tipo de páis
+    inicioBuscado = lower_bound(listaPaises.begin(), listaPaises.end(), paisABuscar);
+    finBuscado = upper_bound(listaPaises.begin(), listaPaises.end(), paisABuscar);
+
+    //Despliega los datos de las entradas del país buscado
+    for(int i = (inicioBuscado- listaPaises.begin()); i < (finBuscado- listaPaises.begin()) ; i++){
+       mivect[i].mostrar();
+    }
+  
 }
