@@ -84,6 +84,7 @@ bool comparaDate( Entrada x, Entrada y) // compara fecha por fecha
   return x.getUbi() < y.getUbi();
 }
 
+
 //Complejidad: O(1) Regresa los primeros tres caractéres de un código UBI ingresado
 string countryFromUbi(string ubi){
     string pais;
@@ -93,6 +94,7 @@ string countryFromUbi(string ubi){
     }
     return pais;
 }
+
 
 
 int main(){
@@ -142,5 +144,5 @@ int main(){
     for(int i = (inicioBuscado- listaPaises.begin()); i < (finBuscado- listaPaises.begin()) ; i++){
        mivect[i].mostrar();
     }
-    
+  
 }
