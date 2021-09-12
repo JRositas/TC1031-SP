@@ -74,17 +74,17 @@ int date2Int(string date){
     return dateCode;
 }
 
-// Complejidad: 0(1)
+// Complejidad: 0(1) Revisa si los UBI de las entradas son iguales, si lo son, compara las fechas, si nó compara los UBI
 bool comparaDate( Entrada x, Entrada y) // compara fecha por fecha
 {
   if (x.getUbi() == y.getUbi()) // checar si hay empate, si hay empate ordena por fecha
   {
     return x.getFechaCode() < y.getFechaCode(); // cual de las dos fechas es más grande
   }
-  return (x.getUbi() < y.getUbi());
+  return x.getUbi() < y.getUbi();
 }
 
-//Complejidad: O(1) 
+//Complejidad: O(1) Regresa los primeros tres caractéres de un código UBI ingresado
 string countryFromUbi(string ubi){
     string pais;
     for (int i = 0; i < 3; i++)
@@ -96,6 +96,8 @@ string countryFromUbi(string ubi){
 
 
 int main(){
+
+    // Creación de variables
     int fechaCode;
     char puntoEntrada;
     string archivo, fecha, ubi, hora, pais, paisABuscar, paisaux;
@@ -104,33 +106,39 @@ int main(){
     vector<string>::iterator inicioBuscado, finBuscado;
     vector<Entrada> mivect;
 
+    //Leer archivo
     ifstream archivoSuez;
 
     cin >> archivo;
 
     archivoSuez.open(archivo);
 
-    
+    //Almacenar entradas como objetos en un vector
     while (archivoSuez >> fecha >> hora >> puntoEntrada >> ubi)
-    {   
-        pais = countryFromUbi(ubi);
-        fechaCode = date2Int(fecha);
+    {
+        pais = countryFromUbi(ubi); //Extraer los los primeros carácteres del UBI y guardarlos como el país de origen 
+        fechaCode = date2Int(fecha); //Convertir fechas a enteros para permitir la comparación
         objAuxiliar = new Entrada(fecha, fechaCode, hora, puntoEntrada, ubi, pais); //Igualas la variable al objAuxiliar
         mivect.push_back(*objAuxiliar);  //push_back() es el metodo que guarda los valores en el vector
     }
 
+    //Complejidad O(nlog2(n)), ordena las entradas en base a un comparador.
     sort(mivect.begin(), mivect.end(), comparaDate);
 
+    //Guarda los identificadores de paises de las entradas en un vector.
     for(int i = 0; i < mivect.size(); i++){
         paisaux = mivect[i].getPais();
         listaPaises.push_back(paisaux);
     } 
 
+    //Se solicita un código de país a buscar
     cin >> paisABuscar;
     
+    // Complejidad log2(n) + 1, funciones que regresan los apuntadores que indican el rango de índices donde se encuentran las entradas de un tipo de páis
     inicioBuscado = lower_bound(listaPaises.begin(), listaPaises.end(), paisABuscar);
     finBuscado = upper_bound(listaPaises.begin(), listaPaises.end(), paisABuscar);
 
+    //Despliega los datos de las entradas del país buscado
     for(int i = (inicioBuscado- listaPaises.begin()); i < (finBuscado- listaPaises.begin()) ; i++){
        mivect[i].mostrar();
     }
